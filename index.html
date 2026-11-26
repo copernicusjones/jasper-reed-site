@@ -1,56 +1,240 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jasper Reed — Creator Ops Automation</title>
-<meta name="description" content="Automation systems for creators and small businesses. Get back 3–5 hours a week. Flat fee, fixed timeline, live in under 2 weeks.">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://copernicusjones.github.io/jasper-reed-site/">
+<title>Jasper Reed — Automation & Web Systems</title>
+<meta name="description" content="Jasper Reed builds n8n and AI automations, lead-capture pages, and production photo/video assets for small businesses. Fixed price, fixed scope, delivered in days.">
 <style>
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:0;color:#111;line-height:1.6}
-header{padding:4rem 1.5rem;text-align:center;background:#0e1116;color:#fff}
-h1{font-size:clamp(1.8rem,5vw,3rem);margin:.2em 0}
-.sub{color:#9fb0c0;max-width:34rem;margin:0 auto}
-section{max-width:44rem;margin:0 auto;padding:3rem 1.5rem}
-.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{border:1px solid #e3e7ec;border-radius:12px;padding:1.25rem}
-.cta{display:inline-block;background:#2563eb;color:#fff;padding:.9rem 1.6rem;border-radius:10px;text-decoration:none;font-weight:600}
-footer{text-align:center;color:#777;font-size:.85rem;padding:2rem}
-</style></head>
+  :root{
+    --bg:#0d0f12; --panel:#14171c; --line:#242a33; --ink:#e8ebef;
+    --dim:#9aa4b2; --acc:#5ee0a0; --acc2:#7aa2ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  header{padding:38px 0 0}
+  .brand{display:flex;align-items:center;gap:14px}
+  .mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--acc),var(--acc2));
+    display:grid;place-items:center;color:#0d0f12;font-weight:800;font-size:19px;letter-spacing:-.5px}
+  .brand h1{font-size:19px;margin:0;letter-spacing:-.2px}
+  .brand span{display:block;font-size:13px;color:var(--dim);font-weight:400;letter-spacing:.2px}
+  nav{margin-left:auto;display:flex;gap:18px;font-size:14px}
+  nav a{color:var(--dim);text-decoration:none}
+  nav a:hover{color:var(--ink)}
+
+  .hero{padding:70px 0 54px;border-bottom:1px solid var(--line)}
+  .hero h2{font-size:clamp(30px,5vw,46px);line-height:1.13;margin:0 0 18px;letter-spacing:-1.2px;font-weight:750}
+  .hero h2 em{font-style:normal;color:var(--acc)}
+  .hero p{font-size:18px;color:var(--dim);max-width:60ch;margin:0 0 28px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 20px;border-radius:9px;text-decoration:none;font-weight:600;font-size:15px}
+  .btn.primary{background:var(--acc);color:#0b0d10}
+  .btn.ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--dim)}
+
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--acc);font-weight:700;margin:0 0 10px}
+  h3{font-size:26px;margin:0 0 8px;letter-spacing:-.5px}
+  .lede{color:var(--dim);margin:0 0 28px;max-width:64ch}
+
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:22px}
+  .card h4{margin:0 0 8px;font-size:16.5px;letter-spacing:-.2px}
+  .card p{margin:0 0 14px;color:var(--dim);font-size:14.5px}
+  .card ul{margin:0;padding-left:18px;color:var(--dim);font-size:14px}
+  .card li{margin:5px 0}
+  .price{font-size:13px;color:var(--acc);font-weight:700;letter-spacing:.3px;margin-top:14px}
+
+  .proof{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .proof .card{position:relative}
+  .tag{position:absolute;top:16px;right:16px;font-size:11px;letter-spacing:.8px;text-transform:uppercase;
+    color:var(--acc);border:1px solid rgba(94,224,160,.35);border-radius:20px;padding:3px 9px}
+
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.9px}
+  td:last-child{color:var(--acc);font-weight:700;white-space:nowrap}
+
+  .note{background:rgba(122,162,255,.07);border:1px solid rgba(122,162,255,.25);
+    border-radius:11px;padding:16px 18px;color:#c6d4f5;font-size:14.5px;margin-top:22px}
+
+  footer{padding:40px 0 64px;color:var(--dim);font-size:14px}
+  footer a{color:var(--acc);text-decoration:none}
+  .foot-row{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+  @media(min-width:700px){ nav{display:flex} }
+  @media(max-width:699px){ nav{display:none} .hero{padding:48px 0 40px} }
+</style>
+</head>
 <body>
+<div class="wrap">
+
 <header>
-<h1>Your busywork, automated.</h1>
-<p class="sub">Jasper Reed builds automation systems for creators and small businesses — lead follow-up, content repurposing, invoicing, reviews. Live in under 2 weeks, flat fee.</p>
-<p style="margin-top:1.5rem"><a class="cta" href="#contact">Book a 15-min look</a></p>
+  <div class="brand">
+    <div class="mark">JR</div>
+    <div>
+      <h1>Jasper Reed</h1>
+      <span>Automation &amp; web systems — Columbus, Ohio</span>
+    </div>
+    <nav>
+      <a href="#proof">Proof</a>
+    <a href="#work">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">Process</a>
+      <a href="mailto:jasper-reed@agentmail.to">Contact</a>
+    </nav>
+  </div>
 </header>
-<section>
-<h2>What I build</h2>
-<div class="grid">
-<div class="card"><strong>Lead capture → follow-up</strong><br>Forms, autoresponders, CRM sync. No lead waits 9 hours again.</div>
-<div class="card"><strong>Content repurposing</strong><br>One video becomes a week of posts — transcripts to scheduled drafts, hands-free.</div>
-<div class="card"><strong>Admin autopilot</strong><br>Invoice reminders, review requests, reporting. The stuff you hate.</div>
+
+<div class="hero">
+  <h2>I build the boring systems that<br>quietly make you money.</h2>
+  <p>n8n and AI automations with real error handling. Lead-capture pages that actually
+     deliver the lead. Production photo and video for local businesses. Fixed scope,
+     fixed price, small enough to start this week.</p>
+  <div class="btns">
+    <a class="btn primary" href="mailto:jasper-reed@agentmail.to?subject=Project%20enquiry">Start a project</a>
+    <a class="btn ghost" href="#work">See what I build</a>
+  </div>
 </div>
+
+<section id="work">
+  <p class="kicker">What I build</p>
+  <h3>Three things, done properly</h3>
+  <p class="lede">I don't take anything I can't finish. If you want a brochure site with no
+     moving parts, I'm the wrong hire — plenty of people do that cheaper.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h4>Workflow automation</h4>
+      <p>n8n, Make, Zapier or plain Python. The difference is what happens when a step fails.</p>
+      <ul>
+        <li>Retries with backoff on every external call</li>
+        <li>Error branch that notifies you, not silence</li>
+        <li>Human approval step before anything irreversible</li>
+        <li>Written runbook so you can run it without me</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Lead capture &amp; landing pages</h4>
+      <p>A page whose only job is to get one form submission into someone's inbox, reliably.</p>
+      <ul>
+        <li>Single conversion goal, no nav clutter</li>
+        <li>Form delivers straight to email or CRM</li>
+        <li>Tested end to end, submission receipt shown</li>
+        <li>Loads under a second on mobile data</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Photo &amp; video production</h4>
+      <p>Product, interior and lifestyle imagery shot and finished for commerce and editorial.</p>
+      <ul>
+        <li>Retouch and consistent colour across a set</li>
+        <li>Marketplace-ready crops and specs</li>
+        <li>Short-form vertical edits for social</li>
+        <li>Usage rights stated in writing up front</li>
+      </ul>
+    </div>
+  </div>
 </section>
-<section>
-<h2>How it works</h2>
-<ol>
-<li><strong>15-min call</strong> — we find the one process worth automating first.</li>
-<li><strong>Fixed-scope build</strong> — flat fee, clear timeline, no hourly meter running.</li>
-<li><strong>Handoff</strong> — documented, tested, and it runs itself.</li>
-</ol>
+
+<section id="proof">
+  <p class="kicker">Live proof</p>
+  <h3>One build you can open right now</h3>
+  <p class="lede">No client logos I can't back up, and no build I'd have to describe instead of show.
+     This one is in production: open it, read the markup, submit the form.</p>
+
+  <div class="proof">
+    <div class="card">
+      <span class="tag">Live</span>
+      <h4>woodwardwelldrilling.com</h4>
+      <p>A single-purpose quote-request site for an independent well-drilling contractor: one goal,
+         one form, and the submission lands in the owner's inbox instead of a database nobody reads.</p>
+      <ul>
+        <li>Static build, no framework, sub-second first paint on mobile data</li>
+        <li>Server-side form handler; end-to-end test submissions captured 2026-10-23</li>
+        <li>Service-area and cost-explainer pages built for local search intent</li>
+        <li>Lead arrives as a structured record — name, phone, need, description</li>
+      </ul>
+      <div class="price"><a href="https://woodwardwelldrilling.com/" style="color:inherit">woodwardwelldrilling.com</a> &middot; in production</div>
+    </div>
+  </div>
+
+  <div class="note">
+    Most of the automation work is invisible by nature — webhooks, retries, error branches, a queue that
+    doesn't double-post. So here is the standard every build ships with, in writing, before I take money:
+    every external call retried with backoff; a failure branch that tells a human what actually broke;
+    a human approval gate before anything irreversible fires; a written runbook so you can run it without me.
+    When I quote a pipeline, the scope names the exact systems, and you see it working before final payment.
+  </div>
 </section>
-<section>
-<h2>Ready-made automation tools</h2>
-<p>Grab a done-for-you toolkit and start automating today — no build required:</p>
-<div class="grid">
-<div class="card"><strong>AI Automation Starter Kit</strong><br>30 prompts, a 30-day content calendar, 10 workflow templates, and a practical AI starter system for small business owners.<br><a href="https://omnihustleautomation.gumroad.com/l/small-business-ai-automation-kit" target="_blank" rel="noopener">$39 · Get the kit →</a></div>
-<div class="card"><strong>AI Prompt Pack for Small Business</strong><br>A curated prompt pack to get better output from ChatGPT and Claude fast.<br><a href="https://omnihustleautomation.gumroad.com/l/scrir" target="_blank" rel="noopener">$12 · Get the pack →</a></div>
-<div class="card"><strong>Content Calendar Notion Template</strong><br>Plan 30 days of content in 30 minutes — Notion template with AI prompts built in.<br><a href="https://omnihustleautomation.gumroad.com/l/vulfum" target="_blank" rel="noopener">$19 · Get the template →</a></div>
-<div class="card"><strong>n8n Workflow Pack</strong><br>20 import-ready n8n JSON workflows across Slack, Notion, GitHub, Discord, Airtable and more.<br><a href="https://omnihustleautomation.gumroad.com/l/thpkil" target="_blank" rel="noopener">$15 · Get the pack →</a></div>
-<div class="card"><strong>VPS hosting</strong><br>Host your automation and sites on fast, reliable cloud VPS. Get $100 credit on your first $300+ (or $10 off your first month).<br><a href="https://www.vultr.com/?ref=9919782" target="_blank" rel="noopener">Get $100 Vultr credit →</a></div>
+
+<section id="pricing">
+  <p class="kicker">Pricing</p>
+  <h3>Fixed price, agreed before I start</h3>
+  <p class="lede">No hourly billing, no scope creep, no invoice surprises. If the job turns out
+     bigger than I quoted, that's my problem, not yours.</p>
+  <table>
+    <thead>
+      <tr><th>Engagement</th><th>What you get</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Wiring audit</strong></td>
+        <td>A written teardown of one workflow, page or pipeline: what breaks, what it costs you,
+            and the fix in order of priority. Delivered in 3 days.</td>
+        <td>$249</td>
+      </tr>
+      <tr>
+        <td><strong>Workflow starter</strong></td>
+        <td>One automation, built and deployed: trigger, logic, error handling, runbook,
+            and a live test run.</td>
+        <td>from $100</td>
+      </tr>
+      <tr>
+        <td><strong>Landing page + lead capture</strong></td>
+        <td>One page, one goal, working form delivery, mobile-first, submitted and verified
+            end to end.</td>
+        <td>from $350</td>
+      </tr>
+      <tr>
+        <td><strong>Photo / video set</strong></td>
+        <td>Agreed shot list, finished and delivered in marketplace or editorial specs,
+            with usage rights in writing.</td>
+        <td>quoted per set</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="process">
+  <p class="kicker">Process</p>
+  <h3>Four steps, no discovery-call theatre</h3>
+  <div class="grid">
+    <div class="card"><h4>1 · You describe the job</h4>
+      <p>One email with what's broken or what you need. A paragraph is enough.</p></div>
+    <div class="card"><h4>2 · I quote and scope it</h4>
+      <p>Fixed price and a delivery date back within one working day, in writing.</p></div>
+    <div class="card"><h4>3 · I build and show you</h4>
+      <p>You see it working before you're asked for the final payment.</p></div>
+    <div class="card"><h4>4 · Handover</h4>
+      <p>Files, credentials transfer, and a one-page runbook. You own all of it.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div><strong style="color:var(--ink)">Jasper Reed</strong> · Automation &amp; web systems · Columbus, Ohio</div>
+    <div><a href="mailto:jasper-reed@agentmail.to">jasper-reed@agentmail.to</a></div>
+  </div>
+  <p style="margin-top:14px;font-size:13px;max-width:62ch">
+    Replies within one working day. I don't do NDA-gated forms, unpaid spec work, or
+    equity-for-build arrangements.
+  </p>
+</footer>
+
 </div>
-<p class="sub" style="font-size:.85rem;color:#888">Every toolkit comes with instant download after checkout.</p>
-</section>
-<section id="contact">
-<h2>Get started</h2>
-<p>Email <a href="mailto:jasperreedindeed@gmail.com">jasperreedindeed@gmail.com</a> with the process you'd most like gone. Straight answer on whether it's a fit — usually same day.</p>
-</section>
-<footer>Jasper Reed · Creator Ops · © 2026</footer>
-</body></html>
+</body>
+</html>
