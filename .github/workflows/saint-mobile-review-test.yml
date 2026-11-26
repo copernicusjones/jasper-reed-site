@@ -1,0 +1,13 @@
+name: Saint mobile approval test
+on:
+  push:
+    branches: ['saint-proposals/mobile-approval-34e0cbfa']
+permissions: {}
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    environment: saint-approval-staging
+    steps:
+      - name: Record reviewer release
+        run: echo "Staging review released. No site files or deployment commands."
